@@ -27,9 +27,6 @@ submit.onclick = function() {
     request.onreadystatechange = function() {
         if(request.readyState === XMLHttpRequest.DONE) {
             if(request.status === 200) {
-                var studentName = request.responseText;
-                var inputName = document.getElementById('name');
-                
                 var names = request.responseText;
                 names = JSON.parse(names);
                 var list = '';
@@ -42,6 +39,8 @@ submit.onclick = function() {
         }  
     };
     
+    var studentName = request.responseText;
+    var inputName = document.getElementById('name');
     request.open('GET', 'http://loyelnaz.imad.hasura-app.io/submit-name?name=' + name, true);
     request.send(null);
 }
